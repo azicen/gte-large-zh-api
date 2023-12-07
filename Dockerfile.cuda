@@ -1,0 +1,19 @@
+FROM pytorch/pytorch:2.1.1-cuda12.1-cudnn8-runtime
+
+ENV DEVICE=cuda
+
+EXPOSE 8000
+
+WORKDIR /app
+
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN echo "import tiktoken; encoding = tiktoken.get_encoding('cl100k_base')" | python3
+RUN echo "from sentence_transformers import SentenceTransformer; \
+          model = SentenceTransformer('thenlper/gte-large-zh')" | python3
+
+COPY embeddings-api.py /app/
+
+ENTRYPOINT ["uvicorn", "embeddings-api:app"]
+CMD ["--host", "0.0.0.0", "--port", "8000"]
