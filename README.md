@@ -1,6 +1,6 @@
 # gte-large-zh-api
 
-一个用于给`one-api`提供文本嵌入模型的简单项目
+一个用于给`one-api`提供文本嵌入模型`gte-large-zh`的简单项目
 
 测试通过的客户端：
 - FastGPT
