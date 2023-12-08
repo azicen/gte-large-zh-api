@@ -38,7 +38,7 @@ services:
       API_KEY: sk-key
     ports:
       - "8000:8000"
-	# 如果需要使用cuda，请取消下面的注释
+    # 如果需要使用cuda，请取消下面的注释
     # deploy:
     #   resources:
     #     reservations:
